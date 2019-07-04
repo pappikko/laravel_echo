@@ -18,3 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('chat', 'ChatController@index');
+
+Route::group(['prefix' => 'ajax'], function () {
+    Route::get('chat', 'Ajax\ChatController@index');
+    Route::post('chat', 'Ajax\ChatController@create');
+});
